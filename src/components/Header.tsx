@@ -8,9 +8,14 @@ import Icon from 'react-native-vector-icons/Feather';
 interface HeaderProps {
   title: string;
   onBack?: () => void;
+  transparent?: boolean;
 }
 
-export const Header: React.FC<HeaderProps> = ({ title, onBack }) => {
+export const Header: React.FC<HeaderProps> = ({
+  title,
+  onBack,
+  transparent,
+}) => {
   const { colors } = useTheme();
 
   const styles = StyleSheet.create({
@@ -19,8 +24,8 @@ export const Header: React.FC<HeaderProps> = ({ title, onBack }) => {
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: colors.surface,
-      borderBottomWidth: 1,
+      backgroundColor: transparent ? 'transparent' : colors.surface,
+      borderBottomWidth: transparent ? 0 : 1,
       borderBottomColor: colors.disabled,
       paddingHorizontal: metrics.padding,
     },
