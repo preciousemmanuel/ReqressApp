@@ -56,8 +56,8 @@ describe('LoginScreen', () => {
       wrapper: AllTheProviders,
     });
 
-    expect(getByPlaceholderText('Email')).toBeTruthy();
-    expect(getByPlaceholderText('Password')).toBeTruthy();
+    expect(getByPlaceholderText('Enter Username or Email')).toBeTruthy();
+    expect(getByPlaceholderText('Enter Password')).toBeTruthy();
     expect(getByTestId('login-button')).toBeTruthy();
   });
 
@@ -67,10 +67,10 @@ describe('LoginScreen', () => {
     });
 
     fireEvent.changeText(
-      getByPlaceholderText('Email'),
+      getByPlaceholderText('Enter Username or Email'),
       'george.bluth@reqres.in'
     );
-    fireEvent.changeText(getByPlaceholderText('Password'), 'Developer19');
+    fireEvent.changeText(getByPlaceholderText('Enter Password'), 'Developer19');
     fireEvent.press(getByTestId('login-button'));
 
     await waitFor(() => {

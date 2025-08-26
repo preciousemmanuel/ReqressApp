@@ -40,7 +40,7 @@ export const UserListScreen: React.FC = () => {
     if (isLoading) {
       return (
         <View style={styles.loaderContainer}>
-          <SkeletonLoader />
+          <ActivityIndicator color={colors.primary} />
         </View>
       );
     }

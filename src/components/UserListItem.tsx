@@ -26,34 +26,57 @@ export const UserListItem: React.FC<UserListItemProps> = ({
     container: {
       flexDirection: 'row',
       alignItems: 'center',
-      padding: metrics.padding,
-      borderBottomWidth: 1,
-      borderBottomColor: colors.disabled,
+      paddingVertical: metrics.padding / 2,
+      paddingHorizontal: metrics.padding,
+    },
+    avatarContainer: {
+      marginRight: metrics.margin,
     },
     avatar: {
-      width: 50,
-      height: 50,
-      borderRadius: 25,
-      marginRight: metrics.margin,
+      width: 60,
+      height: 60,
+      borderRadius: 30,
+    },
+    onlineIndicator: {
+      position: 'absolute',
+      bottom: 2,
+      right: 2,
+      width: 12,
+      height: 12,
+      borderRadius: 6,
+      backgroundColor: '#34C759', // Green color for online status
+      borderWidth: 2,
+      borderColor: colors.background,
     },
     userInfo: {
       flex: 1,
+    },
+    name: {
+      fontWeight: 'bold',
+    },
+    email: {
+      color: colors.disabled,
     },
   });
 
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
-      <FastImage
-        style={styles.avatar}
-        source={{
-          uri: item.avatar,
-          priority: FastImage.priority.normal,
-        }}
-        resizeMode={FastImage.resizeMode.contain}
-      />
+      <View style={styles.avatarContainer}>
+        <FastImage
+          style={styles.avatar}
+          source={{
+            uri: item.avatar,
+            priority: FastImage.priority.normal,
+          }}
+          resizeMode={FastImage.resizeMode.cover}
+        />
+        <View style={styles.onlineIndicator} />
+      </View>
       <View style={styles.userInfo}>
-        <Text variant="h2">{`${item.first_name} ${item.last_name}`}</Text>
-        <Text variant="body">{item.email}</Text>
+        <Text variant="h2" style={styles.name}>{`${item.first_name} ${item.last_name}`}</Text>
+        <Text variant="body" style={styles.email}>
+          {item.email}
+        </Text>
       </View>
     </TouchableOpacity>
   );

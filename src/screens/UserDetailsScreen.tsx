@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ActivityIndicator } from 'react-native';
+import { View, ActivityIndicator, StatusBar } from 'react-native';
 import { useGetUserByIdQuery } from '../services/api';
 import { Container } from '../components/Container';
 import { Header } from '../components/Header';
@@ -30,7 +30,7 @@ export const UserDetailsScreen: React.FC = () => {
   if (isLoading) {
     return (
       <Container>
-        <Header title="User Details" onBack={() => navigation.goBack()} />
+        <Header title="" onBack={() => navigation.goBack()} transparent />
         <View style={styles.loaderContainer}>
           <ActivityIndicator color={colors.primary} />
         </View>
@@ -41,7 +41,7 @@ export const UserDetailsScreen: React.FC = () => {
   if (error) {
     return (
       <Container>
-        <Header title="User Details" onBack={() => navigation.goBack()} />
+        <Header title="" onBack={() => navigation.goBack()} transparent />
         <View style={styles.errorContainer}>
           <Text style={styles.errorText}>
             Failed to load user details. Please try again.
@@ -55,19 +55,20 @@ export const UserDetailsScreen: React.FC = () => {
   const user = data?.data;
 
   return (
-    <Container>
-      <Header title="User Details" onBack={() => navigation.goBack()} />
+    <View style={{ flex: 1, backgroundColor: colors.background }}>
+      <StatusBar barStyle="light-content" />
+      <Header title="" onBack={() => navigation.goBack()} transparent />
       {user && (
-        <View style={styles.container}>
+        <>
+          <FastImage
+            style={styles.avatar}
+            source={{
+              uri: user.avatar,
+              priority: FastImage.priority.normal,
+            }}
+            resizeMode={FastImage.resizeMode.cover}
+          />
           <View style={styles.card}>
-            <FastImage
-              style={styles.avatar}
-              source={{
-                uri: user.avatar,
-                priority: FastImage.priority.normal,
-              }}
-              resizeMode={FastImage.resizeMode.contain}
-            />
             <Text variant="h1" style={styles.name}>
               {`${user.first_name} ${user.last_name}`}
             </Text>
@@ -75,8 +76,8 @@ export const UserDetailsScreen: React.FC = () => {
               {user.email}
             </Text>
           </View>
-        </View>
+        </>
       )}
-    </Container>
+    </View>
   );
 };
