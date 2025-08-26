@@ -1,29 +1,14 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React from 'react';
+import { Provider } from 'react-redux';
+import { store } from './src/store/store';
+import { RootNavigator } from './src/navigation/RootNavigator';
 
-import { LogBox,View, Text } from 'react-native';
-import React, { useEffect, useState } from 'react';
-
-// import RNCallKeep from 'react-native-callkeep';
-
-
-function App(): React.JSX.Element {
-
-  
-
- 
+const App: React.FC = () => {
   return (
-    <View>
-
-      <Text>Hii</Text>
-    </View>
+    <Provider store={store}>
+      <RootNavigator />
+    </Provider>
   );
-}
-
-
+};
 
 export default App;
