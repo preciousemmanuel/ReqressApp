@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>279791364454-23geiekvvqc65htlqifd9tefb43g8a1d.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.279791364454-23geiekvvqc65htlqifd9tefb43g8a1d</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>279791364454-ee3ih1dkmqe4prmehb8monbee9kfqc38.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAmYKu3F-2Gk2HPIjXb2kvWdS6J6SX9QNk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>279791364454</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.signaladoc.patient</string>
+	<key>PROJECT_ID</key>
+	<string>signaladoc-2f82b</string>
+	<key>STORAGE_BUCKET</key>
+	<string>signaladoc-2f82b.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:279791364454:ios:ebe93467a081eacce700a7</string>
+	<key>DATABASE_URL</key>
+	<string>https://signaladoc-2f82b.firebaseio.com</string>
+</dict>
+</plist>
