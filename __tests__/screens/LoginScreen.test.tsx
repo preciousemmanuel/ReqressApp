@@ -29,9 +29,14 @@ jest.mock('@react-navigation/native', () => {
   };
 });
 
+import authReducer from '../../src/store/authSlice';
+import themeReducer from '../../src/store/themeSlice';
+
 const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
+    auth: authReducer,
+    theme: themeReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(api.middleware),

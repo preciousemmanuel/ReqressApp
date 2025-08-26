@@ -5,12 +5,26 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: metrics.padding,
+    justifyContent: 'center',
+  },
+  card: {
+    backgroundColor: 'white',
+    borderRadius: metrics.borderRadius,
+    padding: metrics.padding * 2,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   avatar: {
     width: 150,
     height: 150,
     borderRadius: 75,
-    alignSelf: 'center',
     marginBottom: metrics.margin * 2,
   },
   name: {
