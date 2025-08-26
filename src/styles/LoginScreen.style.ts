@@ -14,4 +14,16 @@ export const styles = StyleSheet.create({
   input: {
     marginBottom: metrics.margin,
   },
+  passwordContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: metrics.margin,
+  },
+  passwordInput: {
+    flex: 1,
+  },
+  eyeIcon: {
+    position: 'absolute',
+    right: metrics.padding,
+  },
 });

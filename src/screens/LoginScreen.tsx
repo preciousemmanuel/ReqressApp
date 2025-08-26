@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import { Button } from '../components/Button';
 import { Container } from '../components/Container';
 import { Text } from '../components/Text';
@@ -10,10 +10,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTheme } from '../hooks/useTheme';
 import { useDispatch } from 'react-redux';
 import { setToken } from '../store/authSlice';
+import Icon from 'react-native-vector-icons/Feather';
 
 export const LoginScreen: React.FC = () => {
   const [email, setEmail] = useState('george.bluth@reqres.in');
   const [password, setPassword] = useState('Developer19');
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [login, { isLoading, error }] = useLoginMutation();
   const dispatch = useDispatch();
   const { colors } = useTheme();
@@ -40,13 +42,25 @@ export const LoginScreen: React.FC = () => {
           onChangeText={setEmail}
           style={styles.input}
         />
-        <TextInput
-          placeholder="Password"
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-          style={styles.input}
-        />
+        <View style={styles.passwordContainer}>
+          <TextInput
+            placeholder="Password"
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry={!isPasswordVisible}
+            style={styles.passwordInput}
+          />
+          <TouchableOpacity
+            onPress={() => setIsPasswordVisible(!isPasswordVisible)}
+            style={styles.eyeIcon}
+          >
+            <Icon
+              name={isPasswordVisible ? 'eye-off' : 'eye'}
+              size={20}
+              color={colors.text}
+            />
+          </TouchableOpacity>
+        </View>
         {error && <Text style={{ color: colors.error }}>Invalid credentials</Text>}
         <Button
           title="Login"
