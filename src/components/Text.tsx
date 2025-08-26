@@ -20,18 +20,22 @@ export const Text: React.FC<TextProps> = ({
     h1: {
       fontSize: metrics.fontSize.xlarge,
       color: colors.text,
+      fontFamily: 'Roboto-Bold',
     },
     h2: {
       fontSize: metrics.fontSize.large,
       color: colors.text,
+      fontFamily: 'Roboto-Bold',
     },
     body: {
       fontSize: metrics.fontSize.medium,
       color: colors.text,
+      fontFamily: 'Roboto-Regular',
     },
     caption: {
       fontSize: metrics.fontSize.small,
       color: colors.placeholder,
+      fontFamily: 'Roboto-Regular',
     },
   });
 
