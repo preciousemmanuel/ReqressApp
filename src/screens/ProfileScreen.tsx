@@ -3,8 +3,8 @@ import { View, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { Container } from '../components/Container';
 import { Text } from '../components/Text';
 import { Button } from '../components/Button';
-import { useDispatch } from 'react-redux';
-import { setTheme } from '../store/themeSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectTheme, setTheme } from '../store/themeSlice';
 import { clearToken } from '../store/authSlice';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTheme } from '../hooks/useTheme';
@@ -27,10 +27,18 @@ export const ProfileScreen: React.FC = () => {
   const dispatch = useDispatch();
   const { data, isLoading } = useGetUserByIdQuery(2); // Hardcoded user for now
   const navigation = useNavigation();
+  const currentTheme = useSelector(selectTheme);
 
   const handleToggleTheme = () => {
-    // This logic can be moved to a settings screen later
-    dispatch(setTheme('dark')); // Simple toggle for now
+    let nextTheme: 'light' | 'dark' | 'system';
+    if (currentTheme === 'light') {
+      nextTheme = 'dark';
+    } else if (currentTheme === 'dark') {
+      nextTheme = 'system';
+    } else {
+      nextTheme = 'light';
+    }
+    dispatch(setTheme(nextTheme));
   };
 
   const handleSignOut = async () => {
@@ -58,6 +66,11 @@ export const ProfileScreen: React.FC = () => {
             <Button title="Edit Profile" onPress={() => {}} style={styles.editButton} />
 
             <ProfileMenuItem icon="settings" text="Settings" onPress={() => {}} />
+            <ProfileMenuItem
+              icon="sun"
+              text="Toggle Theme"
+              onPress={handleToggleTheme}
+            />
             <ProfileMenuItem icon="shopping-bag" text="My Orders" onPress={() => {}} />
             <ProfileMenuItem icon="map-pin" text="Address" onPress={() => {}} />
             <ProfileMenuItem icon="lock" text="Change Password" onPress={() => {}} />

@@ -3,10 +3,9 @@ import { View, FlatList, ActivityIndicator } from 'react-native';
 import { useGetUsersQuery } from '../services/api';
 import { UserListItem } from '../components/UserListItem';
 import { Container } from '../components/Container';
-import { Header } from '../components/Header';
+import { HomeHeader } from '../components/HomeHeader';
 import { Text } from '../components/Text';
 import { Button } from '../components/Button';
-import { SkeletonLoader } from '../components/SkeletonLoader';
 import { styles } from '../styles/UserListScreen.style';
 import { User } from '../types';
 import { useNavigation } from '@react-navigation/native';
@@ -66,7 +65,7 @@ export const UserListScreen: React.FC = () => {
 
   return (
     <Container>
-      <Header title="Users" />
+      <HomeHeader />
       <FlatList
         data={users}
         renderItem={({ item }) => (
