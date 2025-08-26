@@ -7,8 +7,12 @@ import { Text } from '../components/Text';
 import { Button } from '../components/Button';
 import { styles } from '../styles/UserDetailsScreen.style';
 import FastImage from 'react-native-fast-image';
-import { RouteProp, useRoute } from '@react-navigation/native';
-import { RootStackParamList } from '../types';
+import {
+  RouteProp,
+  useNavigation,
+  useRoute,
+} from '@react-navigation/native';
+import { RootStackParamList } from '../types/navigation';
 import { useTheme } from '../hooks/useTheme';
 
 type UserDetailsScreenRouteProp = RouteProp<
@@ -18,6 +22,7 @@ type UserDetailsScreenRouteProp = RouteProp<
 
 export const UserDetailsScreen: React.FC = () => {
   const route = useRoute<UserDetailsScreenRouteProp>();
+  const navigation = useNavigation();
   const { userId } = route.params;
   const { data, error, isLoading, refetch } = useGetUserByIdQuery(userId);
   const { colors } = useTheme();
@@ -25,7 +30,7 @@ export const UserDetailsScreen: React.FC = () => {
   if (isLoading) {
     return (
       <Container>
-        <Header title="User Details" />
+        <Header title="User Details" onBack={() => navigation.goBack()} />
         <View style={styles.loaderContainer}>
           <ActivityIndicator color={colors.primary} />
         </View>
@@ -36,7 +41,7 @@ export const UserDetailsScreen: React.FC = () => {
   if (error) {
     return (
       <Container>
-        <Header title="User Details" />
+        <Header title="User Details" onBack={() => navigation.goBack()} />
         <View style={styles.errorContainer}>
           <Text style={styles.errorText}>
             Failed to load user details. Please try again.
@@ -51,23 +56,25 @@ export const UserDetailsScreen: React.FC = () => {
 
   return (
     <Container>
-      <Header title="User Details" />
+      <Header title="User Details" onBack={() => navigation.goBack()} />
       {user && (
         <View style={styles.container}>
-          <FastImage
-            style={styles.avatar}
-            source={{
-              uri: user.avatar,
-              priority: FastImage.priority.normal,
-            }}
-            resizeMode={FastImage.resizeMode.contain}
-          />
-          <Text variant="h1" style={styles.name}>
-            {`${user.first_name} ${user.last_name}`}
-          </Text>
-          <Text variant="h2" style={styles.email}>
-            {user.email}
-          </Text>
+          <View style={styles.card}>
+            <FastImage
+              style={styles.avatar}
+              source={{
+                uri: user.avatar,
+                priority: FastImage.priority.normal,
+              }}
+              resizeMode={FastImage.resizeMode.contain}
+            />
+            <Text variant="h1" style={styles.name}>
+              {`${user.first_name} ${user.last_name}`}
+            </Text>
+            <Text variant="h2" style={styles.email}>
+              {user.email}
+            </Text>
+          </View>
         </View>
       )}
     </Container>
