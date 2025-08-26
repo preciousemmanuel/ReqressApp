@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, ActivityIndicator, StatusBar } from 'react-native';
 import { useGetUserByIdQuery } from '../services/api';
-import { Container } from '../components/Container';
 import { Header } from '../components/Header';
 import { Text } from '../components/Text';
 import { Button } from '../components/Button';
@@ -27,32 +26,26 @@ export const UserDetailsScreen: React.FC = () => {
   const { data, error, isLoading, refetch } = useGetUserByIdQuery(userId);
   const { colors } = useTheme();
 
+  const user = data?.data;
+
   if (isLoading) {
     return (
-      <Container>
-        <Header title="" onBack={() => navigation.goBack()} transparent />
-        <View style={styles.loaderContainer}>
-          <ActivityIndicator color={colors.primary} />
-        </View>
-      </Container>
+      <View style={styles.loaderContainer}>
+        <ActivityIndicator color={colors.primary} />
+      </View>
     );
   }
 
   if (error) {
     return (
-      <Container>
-        <Header title="" onBack={() => navigation.goBack()} transparent />
-        <View style={styles.errorContainer}>
-          <Text style={styles.errorText}>
-            Failed to load user details. Please try again.
-          </Text>
-          <Button title="Retry" onPress={refetch} />
-        </View>
-      </Container>
+      <View style={styles.errorContainer}>
+        <Text style={styles.errorText}>
+          Failed to load user details. Please try again.
+        </Text>
+        <Button title="Retry" onPress={refetch} />
+      </View>
     );
   }
-
-  const user = data?.data;
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.background }}>

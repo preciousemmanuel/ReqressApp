@@ -50,7 +50,7 @@ export const ProfileScreen: React.FC = () => {
 
   return (
     <Container>
-      <Header title="Profile" onBack={() => navigation.goBack()} />
+      <Header title="Profile" onBack={() => navigation.navigate('Home')} />
       {isLoading ? (
         <ActivityIndicator />
       ) : (

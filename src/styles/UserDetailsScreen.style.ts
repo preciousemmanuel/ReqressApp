@@ -4,6 +4,9 @@ import { metrics } from '../theme/metrics';
 const { height } = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   avatar: {
     width: '100%',
     height: height * 0.4,

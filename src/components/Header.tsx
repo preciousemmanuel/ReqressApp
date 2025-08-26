@@ -28,6 +28,13 @@ export const Header: React.FC<HeaderProps> = ({
       borderBottomWidth: transparent ? 0 : 1,
       borderBottomColor: colors.disabled,
       paddingHorizontal: metrics.padding,
+      ...(transparent && {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 1,
+      }),
     },
     backButton: {
       position: 'absolute',
