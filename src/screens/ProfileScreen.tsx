@@ -56,25 +56,45 @@ export const ProfileScreen: React.FC = () => {
       ) : (
         user && (
           <View style={styles.container}>
-            <FastImage
-              style={styles.avatar}
-              source={{ uri: user.avatar }}
-              resizeMode={FastImage.resizeMode.cover}
-            />
-            <Text style={styles.name}>{`${user.first_name} ${user.last_name}`}</Text>
-            <Text style={styles.username}>{`@${user.first_name.toLowerCase()}`}</Text>
-            <Button title="Edit Profile" onPress={() => {}} style={styles.editButton} />
+            <View style={styles.topContent}>
+              <FastImage
+                style={styles.avatar}
+                source={{ uri: user.avatar }}
+                resizeMode={FastImage.resizeMode.cover}
+              />
+              <Text style={styles.name}>{`${user.first_name} ${user.last_name}`}</Text>
+              <Text style={styles.username}>{`@${user.first_name.toLowerCase()}`}</Text>
+              <Button
+                title="Edit Profile"
+                onPress={() => {}}
+                style={styles.editButton}
+              />
+            </View>
 
-            <ProfileMenuItem icon="settings" text="Settings" onPress={() => {}} />
-            <ProfileMenuItem
-              icon="sun"
-              text="Toggle Theme"
-              onPress={handleToggleTheme}
-            />
-            <ProfileMenuItem icon="shopping-bag" text="My Orders" onPress={() => {}} />
-            <ProfileMenuItem icon="map-pin" text="Address" onPress={() => {}} />
-            <ProfileMenuItem icon="lock" text="Change Password" onPress={() => {}} />
-            <ProfileMenuItem icon="help-circle" text="Help & Support" onPress={() => {}} />
+            <View style={styles.menuWrapper}>
+              <ProfileMenuItem icon="settings" text="Settings" onPress={() => {}} />
+              <ProfileMenuItem
+                icon="sun"
+                text="Toggle Theme"
+                onPress={handleToggleTheme}
+              />
+              <ProfileMenuItem
+                icon="shopping-bag"
+                text="My Orders"
+                onPress={() => {}}
+              />
+              <ProfileMenuItem icon="map-pin" text="Address" onPress={() => {}} />
+              <ProfileMenuItem
+                icon="lock"
+                text="Change Password"
+                onPress={() => {}}
+              />
+              <ProfileMenuItem
+                icon="help-circle"
+                text="Help & Support"
+                onPress={() => {}}
+              />
+            </View>
             <ProfileMenuItem icon="log-out" text="Log out" onPress={handleSignOut} />
           </View>
         )

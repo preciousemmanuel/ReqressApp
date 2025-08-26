@@ -4,8 +4,15 @@ import { metrics } from '../theme/metrics';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     padding: metrics.padding,
+    justifyContent: 'space-between',
+  },
+  topContent: {
+    width: '100%',
+    alignItems: 'center',
+  },
+  menuWrapper: {
+    width: '100%',
   },
   avatar: {
     width: 120,

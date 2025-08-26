@@ -55,7 +55,7 @@ export const UserListItem: React.FC<UserListItemProps> = ({
       fontWeight: 'bold',
     },
     email: {
-      color: colors.disabled,
+      color: '#666',
     },
   });
 
