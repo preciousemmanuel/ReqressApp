@@ -29,8 +29,8 @@ export const BottomTabNavigator: React.FC = () => {
                 flexDirection: 'row',
                 alignItems: 'center',
                 backgroundColor: focused ? colors.primary : 'transparent',
-                paddingHorizontal: focused ? 12 : 0,
-                paddingVertical: focused ? 8 : 0,
+                paddingHorizontal: focused ? 16 : 0,
+                paddingVertical: focused ? 10 : 0,
                 borderRadius: 20,
               }}
             >
