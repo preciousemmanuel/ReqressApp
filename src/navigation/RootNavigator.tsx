@@ -5,17 +5,22 @@ import { AuthStack } from './AuthStack';
 import { MainStack } from './MainStack';
 import { View, ActivityIndicator } from 'react-native';
 import { useTheme } from '../hooks/useTheme';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectToken, setToken } from '../store/authSlice';
 
 export const RootNavigator: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [token, setToken] = useState<string | null>(null);
+  const token = useSelector(selectToken);
+  const dispatch = useDispatch();
   const { colors } = useTheme();
 
   useEffect(() => {
     const checkToken = async () => {
       try {
         const storedToken = await AsyncStorage.getItem('token');
-        setToken(storedToken);
+        if (storedToken) {
+          dispatch(setToken(storedToken));
+        }
       } catch (error) {
         console.error('Failed to fetch token from storage', error);
       } finally {
@@ -24,7 +29,7 @@ export const RootNavigator: React.FC = () => {
     };
 
     checkToken();
-  }, []);
+  }, [dispatch]);
 
   if (isLoading) {
     return (
